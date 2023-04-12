@@ -1,4 +1,4 @@
 public enum RazaPerro {
     //TODO:Definir razas
-    Pug, perry
+    Pug, Piche , Doberman, Pastor_Aleman
 }
