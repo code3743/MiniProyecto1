@@ -1,4 +1,6 @@
+package models;
 import java.util.ArrayList;
+
 
 public class Mascota {
     private ArrayList<Vacuna> vacunas;
@@ -6,6 +8,7 @@ public class Mascota {
     private double costo;
     private String nombre;
     private byte edad;
+    
 
 
     public Mascota(String paisOrige, double costo, String nombre, byte edad) {

@@ -1,3 +1,4 @@
+package models;
 public class Vacuna {
     private String nombre;
     private String descripcion;
