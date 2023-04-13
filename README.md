@@ -11,14 +11,16 @@
 - Cual es el top 5 de las mascotas más costosas.
 - Que mascotas no tienen país de origen en latinoamérica.
 
-Para tener un listado completo de países, se utilizará la API de REST COUNTRIES [https://restcountries.com/v3.1/all], la cual nos devuelve información sobre los países. Se construyó un script en Node.js para procesar los datos y generar un archivo JAVA con los países.
+Para tener un listado completo de países, se utilizará la API de [REST COUNTRIES](https://restcountries.com/v3.1/all), la cual nos devuelve información sobre los países. Se construyó un script en Node.js para procesar los datos y generar un archivo JAVA con los países.
 
 ### Instrucciones para crear el proyecto en Node.js
 
 Para implementar este proyecto, debes seguir los siguientes pasos:
-1. Asegúrate de tener Node.js instalado en tu sistema. Si no lo tienes, descárgalo e instálalo desde el sitio oficial [https://nodejs.org/].
+1. Asegúrate de tener Node.js instalado en tu sistema. Si no lo tienes, descárgalo e instálalo desde el sitio oficial [NodeJs](https://nodejs.org/).
 2. Crea un nuevo proyecto en Node.js en tu terminal utilizando el siguiente comando (recomendado crear una carpeta y desde la carpeta ejecutar):
-``` npm init -y ```
+```sh
+npm init -y
+```
 3. Crea un archivo index.js en la raíz de tu proyecto y copia el siguiente código:
 ```sh
 const https = require('https');
@@ -59,5 +61,7 @@ https.get(url, (res) => {
 });
 ```
 4. Ejecuta el siguiente comando y esperar que el script diga **Archivo Paises.java generado correctamente.**
-```node index.js```
+```sh
+node index.js
+```
 5. En el directorio del proyecto se genera un archivo Paises.java el cual tiene los el nombre de 250 paises sin acento ni espacios como: Puerto Rico -> PuertoRico
