@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class IOConsola {
     private static Scanner sc = new Scanner(System.in);
-    private IOConsola(){}
+
 
     @SafeVarargs 
     public static <T> void imprimir(T ... args) {
@@ -17,39 +17,28 @@ public class IOConsola {
         System.out.println();
     }
 
-    public static void imprimir(String[] opciones) {
-        if(opciones == null){
+    public static <T> void imprimir(boolean addIndex,T[] args) {
+        if(args == null){
             System.out.println();
             return;
         }
-        for (int i=0; i< opciones.length; i++) {
-            System.out.println(String.format("%d . %s",(i +1), opciones[i]));
-        }
-    }
- 
-    public static <T> void imprimirIndex(T[] args) {
-        if(args == null ){
-            System.out.println();
-            return;
-        }
-
        for (int i = 0; i < args.length; i++) {
-             System.out.println((i +1) +". " + args[i].toString());
-        }
+            System.out.println(addIndex ?((i+1)+". "): "" + args[i].toString());
+       }
     }
-
-    public static <T> void imprimirIndex(T[] args, int maxIndex) {
-        if(args == null ){
+    
+    public static <T> void imprimir(boolean addIndex, int maxIndex, T[] args) {
+        if(args == null){
             System.out.println();
             return;
         }
-        if(maxIndex > args.length){
-            System.out.println("Error: El numero no debe ser mayor al permitido");
+        if(maxIndex > args.length || maxIndex < 0){
+            System.out.println("Error al imprimir");
             return;
         }
        for (int i = 0; i < maxIndex; i++) {
-        System.out.println((i +1) +". " + args[i].toString());
-     }
+            System.out.println(addIndex ?((i+1)+". "): "" + args[i].toString());
+       }
     }
 
     public static int leerEntero(String mensaje) {
