@@ -64,4 +64,4 @@ https.get(url, (res) => {
 ```sh
 node index.js
 ```
-5. En el directorio del proyecto se genera un archivo Paises.java el cual tiene los el nombre de 250 paises sin acento ni espacios como: Puerto Rico -> PuertoRico
+5. En el directorio del proyecto se genera un archivo Paises.java el cual contiene el nombre de 250 países sin acento ni espacios, acogiéndolo al estándar Camel Case, ejemplo: Puerto Rico -> PuertoRico
