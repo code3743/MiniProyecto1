@@ -1,4 +1,8 @@
 package models;
+
+import java.util.EnumSet;
+import java.util.Set;
+
 public enum Paises {
     Barbados,
     Reunion,
@@ -253,5 +257,30 @@ public enum Paises {
 
     public String getNombrePais(){
         return name().replaceAll("(?<=\\p{Lower})(?=\\p{Upper})", " ");
+    }
+    private static Set<Paises> paisesLatinos = EnumSet.of(
+        Argentina,
+        Bolivia,
+        Brasil,
+        Chile,
+        Colombia,
+        CostaRica,
+        Cuba,
+        Ecuador,
+        ElSalvador,
+        Guatemala,
+        Haiti,
+        Honduras,
+        Mexico,
+        Nicaragua,
+        Panama,
+        Paraguay,
+        Peru,
+        RepublicaDominicana,
+        Uruguay,
+        Venezuela
+    );
+    public boolean isLatino(){
+        return paisesLatinos.contains(this);
     }
   }
