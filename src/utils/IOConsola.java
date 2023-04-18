@@ -62,16 +62,15 @@ public class IOConsola {
         return b;
     }
     
-    public static boolean leerBoolean(String mensaje) {
-        System.out.print(mensaje);
-        boolean bool = sc.nextBoolean();
-        sc.nextLine(); // consume el salto de línea que queda en el buffer
-        return bool;
-    }
-    
     public static String leerString(String mensaje) {
         System.out.print(mensaje);
         String cadena = sc.nextLine();
         return cadena;
     }
+    
+    public static void borrarPantalla() {
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+    }
+    
 }
