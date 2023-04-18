@@ -1,6 +1,6 @@
 package models;
 
-public class Gato extends Mascota implements Felino{
+public class Gato extends Mascota{
   
     RazaGato raza;
     public Gato(Paises paisOrige, double costo, String nombre, byte edad, RazaGato raza) {
