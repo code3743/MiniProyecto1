@@ -4,14 +4,14 @@ import java.util.ArrayList;
 
 public class Mascota {
     private ArrayList<Vacuna> vacunas;
-    private String paisOrige;
+    private Paises paisOrige;
     private double costo;
     private String nombre;
     private byte edad;
     
 
 
-    public Mascota(String paisOrige, double costo, String nombre, byte edad) {
+    public Mascota(Paises paisOrige, double costo, String nombre, byte edad) {
         this.paisOrige = paisOrige;
         this.costo = costo;
         this.nombre = nombre;
@@ -51,11 +51,11 @@ public class Mascota {
         this.vacunas = vacunas;
     }
 
-    public String getPaisOrige() {
+    public Paises getPaisOrige() {
         return paisOrige;
     }
 
-    public void setPaisOrige(String paisOrige) {
+    public void setPaisOrige(Paises paisOrige) {
         this.paisOrige = paisOrige;
     }
 
