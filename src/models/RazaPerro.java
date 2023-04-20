@@ -9,7 +9,7 @@ public enum RazaPerro {
    Maltipoo,Papillon,PastorAleman,PastorAustraliano,PastorBelga,PastorDeAnatolia,Pequines,PinscherMiniatura,
    PitbullTerrier,Pointer,Pomerania,Pug,Rottweiler,SanBernardo,Schnauzer,SetterIrlandes,SharPei,ShihTzu,
    SpringerSpaniel,StaffordshireBullTerrier,Terranova,Teckel,Weimaraner,WestHighlandWhiteTerrier,Whippet,
-   YorkshireTerrier;
+   YorkshireTerrier, Poodle, Pitbull, Criollo, BullTerrier, Doberman;
   
    public String getNombreRaza(){
       return name().replaceAll("(\\p{L1})(\\p{Lu})","$1 $2");  

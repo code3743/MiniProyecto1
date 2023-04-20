@@ -9,8 +9,6 @@ public class Mascota {
     private String nombre;
     private byte edad;
     
-
-
     public Mascota(Paises paisOrige, double costo, String nombre, byte edad) {
         this.paisOrige = paisOrige;
         this.costo = costo;
@@ -83,8 +81,9 @@ public class Mascota {
         this.edad = edad;
     }
 
+
     @Override
     public String toString() {
-        return String.format("Nombre: %s - Edad: %d - Pais origen: %s - N. Vacunas: %d",nombre, edad, paisOrige, vacunas.size());
+        return String.format("Nombre: %s - Edad: %d - Pais origen: %s - N. Vacunas: %d ",nombre, edad, paisOrige, vacunas.size());
     }
 }

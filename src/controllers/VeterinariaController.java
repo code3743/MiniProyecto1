@@ -20,6 +20,16 @@ public class VeterinariaController {
 
     public void init(){
         insertarMascota();
+        listarMascotas();
+    }
+        
+    public void listarMascotas(){
+        IOConsola.borrarPantalla();
+        IOConsola.imprimirInfo("#  Nombre -- Edad -- Pais De Origen -- N° Vacunas -- Costo --");
+        for(int i=0 ; i< veterinaria.listarMascotas().size(); i++){ 
+            IOConsola.imprimir(i+1+"."," "+veterinaria.listarMascotas().get(i).getNombre()+" -- "+ 
+            veterinaria.listarMascotas().get(i).getEdad() +" ------ "+ veterinaria.listarMascotas().get(i).getPaisOrige()+
+            "  ----- "+veterinaria.listarMascotas().get(i).getVacunas() +"  -----  "+ veterinaria.listarMascotas().get(i).getCosto());}
     }
 
 
@@ -27,7 +37,7 @@ public class VeterinariaController {
         IOConsola.borrarPantalla();
         String opciones[] = {"Gato","Perro", "Atras"};
         IOConsola.imprimir(true, opciones);
-        byte opt = (byte) Validaciones.validarOpciones(opciones.length, "Eliga la opcion: ");
+        byte opt = (byte) Validaciones.validarOpciones(opciones.length, "Elija la opcion: ");
         Mascota mascotaTemp = null;
         switch(opt){
             case 0:
@@ -46,7 +56,7 @@ public class VeterinariaController {
             IOConsola.imprimirError("No se pudo guardar");
         }
     }
-
+    
     private Perro agregaPerro(){
         while(true){
             IOConsola.borrarPantalla();
@@ -88,9 +98,9 @@ public class VeterinariaController {
     private Paises elegirPaisesOrigen(){
         String opciones[] = {"Buscar","Mostrar lista"};
         while (true){
-            IOConsola.imprimirInfo("Eliga el pais de origen");
+            IOConsola.imprimirInfo("Elija el pais de origen");
             IOConsola.imprimir(true, opciones);
-            byte opt =(byte) Validaciones.validarOpciones(opciones.length, "Eliga la opcion: ");
+            byte opt =(byte) Validaciones.validarOpciones(opciones.length, "Elija la opcion: ");
             switch(opt){
                 case 0:
                 String nombrePais = IOConsola.leerString("Ingrese el nombre del pais: ");
@@ -103,7 +113,7 @@ public class VeterinariaController {
                     break;
                 case 1:
                     IOConsola.imprimir(true, Paises.values());
-                    int indexPais =  Validaciones.validarOpciones(Paises.values().length, "Eliga un pais: ");
+                    int indexPais =  Validaciones.validarOpciones(Paises.values().length, "Elija un pais: ");
                     return Paises.values()[indexPais];
             }
         }
@@ -112,9 +122,9 @@ public class VeterinariaController {
     private RazaPerro elegirRazaPerro(){
         String opciones[] = {"Buscar","Mostrar lista"};
         while (true){
-             IOConsola.imprimirInfo("Eliga la raza");
+             IOConsola.imprimirInfo("Elija la raza");
             IOConsola.imprimir(true, opciones);
-            byte opt =(byte) Validaciones.validarOpciones(opciones.length, "Eliga la opcion: ");
+            byte opt =(byte) Validaciones.validarOpciones(opciones.length, "Elija la opcion: ");
             switch(opt){
                 case 0:
                     String nombreRaza = IOConsola.leerString("Ingrese la raza: ");
@@ -128,7 +138,7 @@ public class VeterinariaController {
                     break;
                 case 1:
                     IOConsola.imprimir(true, RazaPerro.values());
-                    int indexRaza =  Validaciones.validarOpciones(RazaPerro.values().length, "Eliga una raza: ");
+                    int indexRaza =  Validaciones.validarOpciones(RazaPerro.values().length, "Elija una raza: ");
                     return RazaPerro.values()[indexRaza];
             }
         }
@@ -137,9 +147,9 @@ public class VeterinariaController {
     private RazaGato elegirRazaGato(){
         String opciones[] = {"Buscar","Mostrar lista"};
         while (true){
-            IOConsola.imprimirInfo("Eliga la raza");
+            IOConsola.imprimirInfo("Elija la raza");
             IOConsola.imprimir(true, opciones);
-            byte opt =(byte) Validaciones.validarOpciones(opciones.length, "Eliga la opcion: ");
+            byte opt =(byte) Validaciones.validarOpciones(opciones.length, "Elija la opcion: ");
             switch(opt){
                 case 0:
                     String nombreRaza = IOConsola.leerString("Ingrese la raza: ").toLowerCase();
@@ -154,7 +164,7 @@ public class VeterinariaController {
                     break;
                 case 1:
                     IOConsola.imprimir(true, RazaGato.values());
-                    int indexRaza =  Validaciones.validarOpciones(RazaGato.values().length, "Eliga una raza: ");
+                    int indexRaza =  Validaciones.validarOpciones(RazaGato.values().length, "Elija una raza: ");
                     return RazaGato.values()[indexRaza];
             }
         }
