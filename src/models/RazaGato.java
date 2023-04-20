@@ -36,9 +36,13 @@ public enum RazaGato {
     Toyger,
     VanTurco;
     public String getNombreRaza(){
-        return name().replaceAll("(\\p{Ll}(\\p{Lu}))","$1 $2");
+        return name().replaceAll("(?<=\\p{Lower})(?=\\p{Upper})", " ");
     }
+    @Override
+    public String toString() {
+        return name().replaceAll("(?<=\\p{Lower})(?=\\p{Upper})", " ");
 
+    }
     //Metodo que imprime las opciones de razas de gatos que estan disponibles con numeracion en lista
     /* public void imprimirRazas(){
         Integer i=1;

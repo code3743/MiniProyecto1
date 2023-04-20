@@ -20,4 +20,9 @@ public class Perro extends Mascota{
     public void setRaza(RazaPerro raza) {
         this.raza = raza;
     }
+
+    @Override
+    public String toString() {
+        return "  ---  " + nombre + "  ---  " + "  ---  "+ edad + "  ---  " + raza + "  ---  " + paisOrige + "  ---  " + vacunas + "  ---  "+ costo ;
+    }
 }

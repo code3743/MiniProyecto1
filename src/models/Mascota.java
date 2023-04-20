@@ -3,14 +3,12 @@ import java.util.ArrayList;
 
 
 public class Mascota {
-    private ArrayList<Vacuna> vacunas;
-    private Paises paisOrige;
-    private double costo;
-    private String nombre;
-    private byte edad;
+    protected ArrayList<Vacuna> vacunas;
+    protected Paises paisOrige;
+    protected double costo;
+    protected String nombre;
+    protected byte edad;
     
-
-
     public Mascota(Paises paisOrige, double costo, String nombre, byte edad) {
         this.paisOrige = paisOrige;
         this.costo = costo;
@@ -83,8 +81,6 @@ public class Mascota {
         this.edad = edad;
     }
 
-    @Override
-    public String toString() {
-        return String.format("Nombre: %s - Edad: %d - Pais origen: %s - N. Vacunas: %d",nombre, edad, paisOrige, vacunas.size());
-    }
+
+    
 }
