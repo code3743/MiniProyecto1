@@ -23,6 +23,6 @@ public class Perro extends Mascota{
 
     @Override
     public String toString() {
-        return "  ---  " + nombre + "  ---  " + "  ---  "+ edad + "  ---  " + raza + "  ---  " + paisOrige + "  ---  " + vacunas + "  ---  "+ costo ;
+      return super.toString() + String.format(" - Raza: %s", raza.getNombreRaza());
     }
 }
