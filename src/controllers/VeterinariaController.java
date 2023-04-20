@@ -20,6 +20,8 @@ public class VeterinariaController {
 
     public void init(){
         insertarMascota();
+        eliminarMascota();
+        
     }
         
     public void listarMascotas(){
@@ -39,6 +41,7 @@ public class VeterinariaController {
             veterinaria.listarMascotas().get(i).getEdad() +" ------ "+ veterinaria.listarMascotas().get(i).getPaisOrige()+
             "  ----- "+veterinaria.listarMascotas().get(i).getVacunas() +"  -----  "+ veterinaria.listarMascotas().get(i).getCosto());}
         */ }
+
 
     public void buscarMascotaPorNombre(){
         String name = IOConsola.leerString("Digite el nombre de la mascota a buscar: ");
@@ -135,7 +138,7 @@ public class VeterinariaController {
     private RazaPerro elegirRazaPerro(){
         String opciones[] = {"Buscar","Mostrar lista"};
         while (true){
-             IOConsola.imprimirInfo("Elija la raza");
+            IOConsola.imprimirInfo("Elija la raza");
             IOConsola.imprimir(true, opciones);
             byte opt =(byte) Validaciones.validarOpciones(opciones.length, "Elija la opcion: ");
             switch(opt){
@@ -183,4 +186,39 @@ public class VeterinariaController {
         }
     }
 
+    
+    public void eliminarMascota(){
+        IOConsola.borrarPantalla();
+        IOConsola.imprimirInfo("Como desea eliminar su mascota.");
+        String opciones[] = {"Buscar por nombre.","Listar mascotas.", "Atras."};
+        IOConsola.imprimir(true, opciones);
+        byte opt =(byte) Validaciones.validarOpciones(opciones.length, "Eliga la opcion: ");
+        if(veterinaria.listarMascotas().size()!=0){
+            switch(opt){
+                case 0:
+                    String nombreMascota = IOConsola.leerString("Ingrese el nombre: ").toLowerCase();
+                    if(veterinaria.eliminarMascota(veterinaria.buscarMascotaPorNombre(nombreMascota))){
+                        IOConsola.imprimirRealizado("Se ha eliminado la mascota correctamente.");
+                    }else{
+                        IOConsola.imprimirError("No se encontro la mascota: "+nombreMascota);
+                    }break;
+                case 1:
+                    IOConsola.imprimirInfo("Nombres");
+                    for(int i=0 ; i< veterinaria.listarMascotas().size(); i++){ 
+                        IOConsola.imprimir(i+1+".",veterinaria.listarMascotas().get(i).getNombre());};
+                    int indexMascota= IOConsola.leerEntero("Ingrese el numero de opcion: ");
+                    // A la variable indexMascota se les resta un uno para dar su indice
+                    if(veterinaria.eliminarMascota(veterinaria.elegirMascota(indexMascota-1))== true){
+                        IOConsola.imprimirRealizado("Se ha eliminado la mascota correctamente.");
+                    }else{
+                        IOConsola.imprimirError("No se encontro la opcion ["+indexMascota+"] en la lista.");
+                    };break;
+                case 2:
+                    return;
+                }
+                
+            }else{
+                IOConsola.imprimirProblemas("No hay mascotas agregadas a la lista aun.");
+        } 
+    }
 }
