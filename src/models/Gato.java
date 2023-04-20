@@ -7,5 +7,11 @@ public class Gato extends Mascota{
         super(paisOrige, costo, nombre, edad);
         this.raza = raza;
     }
+    public RazaGato getRaza() {
+        return raza;
+    }
+    public void setRaza(RazaGato raza) {
+        this.raza = raza;
+    }
     
 }

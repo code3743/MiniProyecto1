@@ -8,8 +8,6 @@ public class Veterinaria {
 
 
   public Veterinaria() {
-  
-  
     this.mascotas = new ArrayList<Mascota>();
   }
 
@@ -26,13 +24,9 @@ public class Veterinaria {
     return mascotasConVacuna;
   }
  
-  // public void actulizarMascota(Mascota mascota){
-  //   byte opt = 0;
-  //   String[] opciones = {"Nombre", "Edad", "Paise de orgien", "Costo", "Vacunas" };
-  //   IOConsola.imprimir(opciones);
-  //   opt = validarOpciones(opciones.length, "Eliga una opcion: ");
-  //   //TODO: Realizar funcionalidad para cada opcion
-  // }
+  public void actulizarMascota(int index, Mascota mascota){
+      mascotas.set(index, mascota);
+  }
 
   // public void actulizarVacunas(ArrayList<Vacuna> vacunas){
   //   byte opt = 0;

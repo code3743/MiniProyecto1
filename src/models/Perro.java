@@ -1,10 +1,23 @@
 package models;
 public class Perro extends Mascota{
     
-    RazaPerro raza;
+    private RazaPerro raza;
     
-    public Perro(Paises paisOrige, double costo, String nombre, byte edad){
+    public Perro(RazaPerro raza, Paises paisOrige, double costo, String nombre, byte edad ){
         super(paisOrige, costo, nombre, edad);
+        this.raza = raza;
        
+    }
+
+    public Perro(){
+        super(null, 0, "",(byte) 0);
+    }
+
+    public RazaPerro getRaza() {
+        return raza;
+    }
+
+    public void setRaza(RazaPerro raza) {
+        this.raza = raza;
     }
 }
