@@ -20,19 +20,32 @@ public class VeterinariaController {
 
     public void init(){
         insertarMascota();
-        listarMascotas();
     }
         
     public void listarMascotas(){
         IOConsola.borrarPantalla();
-        IOConsola.imprimirInfo("#  Nombre -- Edad -- Pais De Origen -- N° Vacunas -- Costo --");
-        for(int i=0 ; i< veterinaria.listarMascotas().size(); i++){ 
+        IOConsola.imprimirInfo("#  Nombre  ---  Edad  ---  Raza  ---  Pais De Origen  ---  N° Vacunas  ---  Costo ---");
+        for(Mascota lista : veterinaria.listarMascotas()){
+            IOConsola.imprimir(lista);
+        }
+        int decision = IOConsola.leerEntero("\n¿Deseas volver a la ventana anterior?  1.Si -- 2.No: ");
+        if(decision == 1){
+            insertarMascota();
+        }else{
+            return;
+        }
+        /*for(int i=0 ; i< veterinaria.listarMascotas().size(); i++){ 
             IOConsola.imprimir(i+1+"."," "+veterinaria.listarMascotas().get(i).getNombre()+" -- "+ 
             veterinaria.listarMascotas().get(i).getEdad() +" ------ "+ veterinaria.listarMascotas().get(i).getPaisOrige()+
             "  ----- "+veterinaria.listarMascotas().get(i).getVacunas() +"  -----  "+ veterinaria.listarMascotas().get(i).getCosto());}
+        */ }
+
+    public void buscarMascotaPorNombre(){
+        String name = IOConsola.leerString("Digite el nombre de la mascota a buscar: ");
+        if(veterinaria.buscarMascotaPorNombre(name) != null){
+            IOConsola.imprimir(veterinaria.buscarMascotaPorNombre(name));
+        }
     }
-
-
     public void insertarMascota(){
         IOConsola.borrarPantalla();
         String opciones[] = {"Gato","Perro", "Atras"};
