@@ -5,7 +5,7 @@ public class Validaciones{
        int opt = 0;
         while(true){
         try {
-          opt = IOConsola.leerByte(mensaje);
+          opt = IOConsola.leerEntero(mensaje);
           if(opt > 0 && opt <= limiteOpcion){
               return opt - 1 ;
           }else{
