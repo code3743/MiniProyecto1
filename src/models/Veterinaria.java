@@ -37,7 +37,7 @@ public class Veterinaria {
   // }
   
   public Mascota elegirMascota(int index ){
-    if(index > 0 && index < mascotas.size()){
+    if(index >= 0 && index < mascotas.size()){
       return mascotas.get(index);
     }
     return null;
