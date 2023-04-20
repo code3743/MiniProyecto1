@@ -42,7 +42,7 @@ public class IOConsola {
     }
 
     private static void imprimirIndex(String index, String mensaje){
-        System.out.println(Colores.AZUL.getColor()+ index + Colores.RESET.getColor());
+        System.out.println(Colores.AZUL.getColor()+ index + Colores.RESET.getColor() + " " + mensaje);
     }
     public static void imprimirError(String mensaje){
         System.out.println(Colores.ROJO.getColor() + mensaje + Colores.RESET.getColor());
@@ -55,7 +55,9 @@ public class IOConsola {
     public static void imprimirProblemas(String mensaje){
         System.out.println(Colores.AMARILLO.getColor() + mensaje + Colores.RESET.getColor());
     }
-
+    public static void imprimirRealizado(String mensaje){
+        System.out.println(Colores.VERDE.getColor() + mensaje + Colores.RESET.getColor());
+    }
     public static int leerEntero(String mensaje) {
         System.out.print(mensaje);
         System.out.print(Colores.VERDE.getColor());

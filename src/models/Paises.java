@@ -258,6 +258,11 @@ public enum Paises {
     public String getNombrePais(){
         return name().replaceAll("(?<=\\p{Lower})(?=\\p{Upper})", " ");
     }
+    @Override
+    public String toString() {
+        return name().replaceAll("(?<=\\p{Lower})(?=\\p{Upper})", " ");
+
+    }
     private static Set<Paises> paisesLatinos = EnumSet.of(
         Argentina,
         Bolivia,
