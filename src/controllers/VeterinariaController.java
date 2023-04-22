@@ -7,6 +7,7 @@ import models.Paises;
 import models.Perro;
 import models.RazaGato;
 import models.RazaPerro;
+import models.Vacuna;
 import models.Veterinaria;
 import utils.IOConsola;
 import utils.Validaciones;
@@ -21,9 +22,6 @@ public class VeterinariaController {
 
     public void init(){
         insertarMascota();
-        listarMascotas();
-        // eliminarMascota();
-        // moduloVacunacion();
     }
         
     public void listarMascotas(){
@@ -33,20 +31,16 @@ public class VeterinariaController {
             IOConsola.imprimirError("No hay mascotas agregadas");
             return;
         }
-        IOConsola.imprimirInfo("# Nombre - Edad - N° Vacunas - Pais origen");
+        IOConsola.imprimirInfo("# Nombre - Edad - N° Vacunas - Pais origen - Raza");
         IOConsola.imprimir(true, mascotas.toArray());
         
         int decision = IOConsola.leerEntero("\n¿Deseas volver a la ventana anterior?  1.Si -- 2.No: ");
         if(decision == 1){
-            insertarMascota();
+            
         }else{
             return;
         }
-        /*for(int i=0 ; i< veterinaria.listarMascotas().size(); i++){ 
-            IOConsola.imprimir(i+1+"."," "+veterinaria.listarMascotas().get(i).getNombre()+" -- "+ 
-            veterinaria.listarMascotas().get(i).getEdad() +" ------ "+ veterinaria.listarMascotas().get(i).getPaisOrige()+
-            "  ----- "+veterinaria.listarMascotas().get(i).getVacunas() +"  -----  "+ veterinaria.listarMascotas().get(i).getCosto());}
-        */ }
+    }
 
 
     public void buscarMascotaPorNombre(){
@@ -87,7 +81,6 @@ public class VeterinariaController {
         }
        
     }
-    
     private Perro agregaPerro(){
         while(true){
             IOConsola.borrarPantalla();
@@ -100,7 +93,7 @@ public class VeterinariaController {
             IOConsola.borrarPantalla();
             IOConsola.imprimirInfo("Desea guardar el perro con los siguientes datos: ");
             IOConsola.imprimirInfo("Nombre - Edad - Precio - Raza - Pais origen");
-            IOConsola.imprimir(nombre, edad, precio,raza.getNombreRaza(), paisOrige);
+            IOConsola.imprimir(nombre+"   "+ edad+"    "+precio+"   "+raza.getNombreRaza()+"   "+paisOrige);
             if(IOConsola.leerEntero("1. Si - 2. No: ") == 1){
                   return new Perro(raza, paisOrige, precio, nombre, edad);
             }
@@ -119,7 +112,7 @@ public class VeterinariaController {
             IOConsola.borrarPantalla();
             IOConsola.imprimirInfo("Desea guardar el gato con los siguientes datos: ");
             IOConsola.imprimirInfo("Nombre - Edad - Precio - Raza - Pais origen");
-            IOConsola.imprimir(nombre, edad, precio,raza.getNombreRaza(), paisOrige);
+            IOConsola.imprimir(nombre+"   "+ edad+"    "+precio+"   "+raza.getNombreRaza()+"   "+paisOrige);
             if(IOConsola.leerEntero("1. Si - 2. No: ") == 1){
                   return new Gato( paisOrige, precio, nombre, edad, raza);
             }
@@ -221,8 +214,6 @@ public class VeterinariaController {
                 case 2:
                     return;
             }
-
-          
         }
     }
 
@@ -243,7 +234,7 @@ public class VeterinariaController {
         IOConsola.borrarPantalla();
         String opciones[] = {"Buscar por nombre.","Listar mascotas.", "Atras."};
         while(true){
-            IOConsola.imprimirInfo("Como desea eliminar su mascota.");
+            IOConsola.imprimirInfo("¿Como desea eliminar su mascota?.");
             IOConsola.imprimir(true, opciones);
             byte opt =(byte) Validaciones.validarOpciones(opciones.length, "Eliga la opcion: ");
             if(!veterinaria.listarMascotas().isEmpty()){
@@ -267,13 +258,77 @@ public class VeterinariaController {
                         };break;
                     case 2:
                         return;
-                    }
-                    
+                    }    
                 }else{
                     IOConsola.imprimirProblemas("No hay mascotas agregadas a la lista aun.");
             } 
         }
-       
-       
+    }
+    public void actualizarMascota(){
+        IOConsola.borrarPantalla();
+        IOConsola.imprimirInfo("Actualizacion  de las mascotas");
+        String opciones2[] = {"Ver lista de mascotas", "Atras"};
+        IOConsola.imprimir(true, opciones2);
+        byte opt = (byte) Validaciones.validarOpciones(opciones2.length, "Elija la opcion: ");
+        if(veterinaria.listarMascotas().size()!=0){
+            switch(opt){
+                case 0:
+                    IOConsola.imprimirInfo("Nombres");
+                    for(int i=0 ; i< veterinaria.listarMascotas().size(); i++){ 
+                    IOConsola.imprimir(i+1+".",veterinaria.listarMascotas().get(i).getNombre());};
+                    int i=0;
+                    String nombreMascota = IOConsola.leerString("Ingrese el nombre de la mascota a actualizar: ").toLowerCase();
+                    for( i=0 ; i< veterinaria.listarMascotas().size(); i++){
+                        if (veterinaria.listarMascotas().get(i).getNombre().equals(nombreMascota)){
+                            break;   
+                        }
+                    }
+                    if(veterinaria.buscarMascotaPorNombre(nombreMascota) != null){
+                        IOConsola.imprimirInfo("¿Que quieres modificar de esta mascota?");
+                        String opciones1[] = {"Nombre","Edad", "Costo","Pais de origen","Vacunas","Atras"};
+                        IOConsola.imprimir(true, opciones1);
+                        byte decision = (byte) Validaciones.validarOpciones(opciones1.length, "Elija la opcion: ");
+                        switch(decision){
+                            case 0:
+                                String newName = IOConsola.leerString("Digite el nuevo nombre de la mascota: ");
+                                veterinaria.listarMascotas().get(i).setNombre(newName);
+                                break;
+                            case 1:
+                                Byte newAge = (byte) IOConsola.leerByte("Digite la nueva edad de la mascota: ");
+                                veterinaria.listarMascotas().get(i).setEdad(newAge);
+                                break;
+                            case 2: 
+                                int newCost = IOConsola.leerEntero("Digite el nuevo costo de la mascota: ");
+                                veterinaria.listarMascotas().get(i).setCosto(newCost);
+                                break;
+                            case 3:
+                                IOConsola.imprimirInfo("¿Como desea asignar el nuevo pais?");
+                                Paises newCountry = elegirPaisesOrigen();
+                                veterinaria.listarMascotas().get(i).setPaisOrige(newCountry);
+                                break;
+                            case 4:
+                                IOConsola.imprimirInfo("¿Que desea hacer?: ");
+                                String options[] = {"Agregar Vacuna", "Borrar vacuna","Atras"};
+                                IOConsola.imprimir(true, options);
+                                byte eleccion = (byte) Validaciones.validarOpciones(options.length, "Elija la opcion: ");
+                                switch(eleccion){
+                                    case 0:
+                                        String nameVacuna = IOConsola.leerString("Digite el nombre de la vacuna: ");
+                                        String descripcion = IOConsola.leerString("Digite la descripcion de la vacuna: ");
+                                        Vacuna name = new Vacuna(nameVacuna, descripcion);
+                                        veterinaria.listarMascotas().get(i).aplicarVacuna(name); break;
+                                    case 1:
+                                        String nameVacuna1 = IOConsola.leerString("Digite el nombre de la vacuna: ");
+                                        Vacuna elimVacuna = veterinaria.listarMascotas().get(i).buscarVacuna(nameVacuna1);
+                                        veterinaria.listarMascotas().get(i).elminarVacuna(elimVacuna); break;
+                                    case 2:
+                                        return;
+                                } break;
+                            case 5: return;      
+                        }
+                    }
+                case 1: return;
+                }
+           }
     }
 }
