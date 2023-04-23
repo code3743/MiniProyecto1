@@ -22,6 +22,8 @@ public class VeterinariaController {
 
     public void init(){
         insertarMascota();
+        actualizarMascota();
+        moduloVacunacion();
     }
         
     public void listarMascotas(){
@@ -270,7 +272,7 @@ public class VeterinariaController {
         String opciones2[] = {"Ver lista de mascotas", "Atras"};
         IOConsola.imprimir(true, opciones2);
         byte opt = (byte) Validaciones.validarOpciones(opciones2.length, "Elija la opcion: ");
-        if(veterinaria.listarMascotas().size()!=0){
+        if(!(veterinaria.listarMascotas().isEmpty())){
             switch(opt){
                 case 0:
                     IOConsola.imprimirInfo("Nombres");
@@ -279,7 +281,7 @@ public class VeterinariaController {
                     int i=0;
                     String nombreMascota = IOConsola.leerString("Ingrese el nombre de la mascota a actualizar: ").toLowerCase();
                     for( i=0 ; i< veterinaria.listarMascotas().size(); i++){
-                        if (veterinaria.listarMascotas().get(i).getNombre().equals(nombreMascota)){
+                        if (veterinaria.listarMascotas().get(i).getNombre().toLowerCase().equals(nombreMascota)){
                             break;   
                         }
                     }
