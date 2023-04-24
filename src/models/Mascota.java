@@ -16,13 +16,17 @@ public class Mascota {
         this.edad = edad;
         vacunas = new ArrayList<Vacuna>();
     }
-
+    
     public void aplicarVacuna(Vacuna vacuna){
         this.vacunas.add(vacuna);
     }
     
     public int totalVacunasAplicadas() {
         return this.vacunas.size();
+    }
+    
+    public boolean elminarVacuna(Vacuna name){
+        return this.vacunas.remove(name);
     }
 
     public Vacuna buscarVacuna(String nombre){
