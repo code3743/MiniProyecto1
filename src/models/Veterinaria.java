@@ -57,7 +57,7 @@ public class Veterinaria {
   
   public Mascota buscarMascotaPorNombre(String nombre) {
     for (Mascota mascota :  this.mascotas) {
-      if (mascota.getNombre().equals(nombre)) {
+      if (mascota.getNombre().toLowerCase().equals(nombre.toLowerCase())) {
         return mascota;
       }
     }
