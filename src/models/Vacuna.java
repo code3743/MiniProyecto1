@@ -7,7 +7,7 @@ public class Vacuna {
         this.nombre = nombre;
         this.descripcion = descripcion;
     }
-
+    public Vacuna(){}
     public String getNombre() {
         return nombre;
     }
