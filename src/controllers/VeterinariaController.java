@@ -278,14 +278,15 @@ public class VeterinariaController {
                     IOConsola.imprimirInfo("Nombres");
                     for(int i=0 ; i< veterinaria.listarMascotas().size(); i++){ 
                     IOConsola.imprimir(i+1+".",veterinaria.listarMascotas().get(i).getNombre());};
-                    int i=0;
+                    int indexMascota=-1;
                     String nombreMascota = IOConsola.leerString("Ingrese el nombre de la mascota a actualizar: ").toLowerCase();
-                    for( i=0 ; i< veterinaria.listarMascotas().size(); i++){
+                    for( int i=0 ; i< veterinaria.listarMascotas().size(); i++){
                         if (veterinaria.listarMascotas().get(i).getNombre().toLowerCase().equals(nombreMascota)){
+                            indexMascota = i;
                             break;   
                         }
                     }
-                    if(veterinaria.buscarMascotaPorNombre(nombreMascota) != null){
+                    if(indexMascota != -1){
                         IOConsola.imprimirInfo("¿Que quieres modificar de esta mascota?");
                         String opciones1[] = {"Nombre","Edad", "Costo","Pais de origen","Vacunas","Atras"};
                         IOConsola.imprimir(true, opciones1);
@@ -293,20 +294,20 @@ public class VeterinariaController {
                         switch(decision){
                             case 0:
                                 String newName = IOConsola.leerString("Digite el nuevo nombre de la mascota: ");
-                                veterinaria.listarMascotas().get(i).setNombre(newName);
+                                veterinaria.listarMascotas().get(indexMascota).setNombre(newName);
                                 break;
                             case 1:
                                 Byte newAge = (byte) IOConsola.leerByte("Digite la nueva edad de la mascota: ");
-                                veterinaria.listarMascotas().get(i).setEdad(newAge);
+                                veterinaria.listarMascotas().get(indexMascota).setEdad(newAge);
                                 break;
                             case 2: 
                                 int newCost = IOConsola.leerEntero("Digite el nuevo costo de la mascota: ");
-                                veterinaria.listarMascotas().get(i).setCosto(newCost);
+                                veterinaria.listarMascotas().get(indexMascota).setCosto(newCost);
                                 break;
                             case 3:
                                 IOConsola.imprimirInfo("¿Como desea asignar el nuevo pais?");
                                 Paises newCountry = elegirPaisesOrigen();
-                                veterinaria.listarMascotas().get(i).setPaisOrige(newCountry);
+                                veterinaria.listarMascotas().get(indexMascota).setPaisOrige(newCountry);
                                 break;
                             case 4:
                                 IOConsola.imprimirInfo("¿Que desea hacer?: ");
@@ -318,11 +319,11 @@ public class VeterinariaController {
                                         String nameVacuna = IOConsola.leerString("Digite el nombre de la vacuna: ");
                                         String descripcion = IOConsola.leerString("Digite la descripcion de la vacuna: ");
                                         Vacuna name = new Vacuna(nameVacuna, descripcion);
-                                        veterinaria.listarMascotas().get(i).aplicarVacuna(name); break;
+                                        veterinaria.listarMascotas().get(indexMascota).aplicarVacuna(name); break;
                                     case 1:
                                         String nameVacuna1 = IOConsola.leerString("Digite el nombre de la vacuna: ");
-                                        Vacuna elimVacuna = veterinaria.listarMascotas().get(i).buscarVacuna(nameVacuna1);
-                                        veterinaria.listarMascotas().get(i).elminarVacuna(elimVacuna); break;
+                                        Vacuna elimVacuna = veterinaria.listarMascotas().get(indexMascota).buscarVacuna(nameVacuna1);
+                                        veterinaria.listarMascotas().get(indexMascota).elminarVacuna(elimVacuna); break;
                                     case 2:
                                         return;
                                 } break;
