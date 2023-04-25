@@ -22,7 +22,6 @@ public class VeterinariaController {
 
     public void init(){
         insertarMascota();
-        listaMascotasCostosas();
         
     }
 
