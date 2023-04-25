@@ -22,8 +22,13 @@ public class VeterinariaController {
 
     public void init(){
         insertarMascota();
-        actualizarMascota();
-        moduloVacunacion();
+        listaMascotasCostosas();
+        
+    }
+
+    public void listaMascotasCostosas(){
+        IOConsola.borrarPantalla();
+        IOConsola.imprimir(true,5, veterinaria.listaMascotasCostosas().toArray());
     }
         
     public void listarMascotas(){
@@ -43,7 +48,6 @@ public class VeterinariaController {
             return;
         }
     }
-
 
     public void buscarMascotaPorNombre(){
         String name = IOConsola.leerString("Digite el nombre de la mascota a buscar: ");
@@ -89,7 +93,7 @@ public class VeterinariaController {
             IOConsola.imprimirInfo("Agrege los datos del Perro");
             String nombre = IOConsola.leerString("Ingrese el nombre: ");
             byte edad = IOConsola.leerByte("Ingrese la edad: ");
-            double precio = IOConsola.leerDouble("Precio de la mascota: ");
+            float precio = (float)IOConsola.leerDouble("Precio de la mascota: ");
             Paises paisOrige = elegirPaisesOrigen();
             RazaPerro raza = elegirRazaPerro();
             IOConsola.borrarPantalla();
@@ -108,7 +112,7 @@ public class VeterinariaController {
             IOConsola.imprimirInfo("Agrege los datos del Gato");
             String nombre = IOConsola.leerString("Ingrese el nombre: ");
             byte edad = IOConsola.leerByte("Ingrese la edad: ");
-            double precio = IOConsola.leerDouble("Precio de la mascota: ");
+            float precio = (float)IOConsola.leerDouble("Precio de la mascota: ");
             Paises paisOrige = elegirPaisesOrigen();
             RazaGato raza = elegirRazaGato();
             IOConsola.borrarPantalla();

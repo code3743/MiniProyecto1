@@ -3,7 +3,7 @@ public class Perro extends Mascota{
     
     private RazaPerro raza;
     
-    public Perro(RazaPerro raza, Paises paisOrige, double costo, String nombre, byte edad ){
+    public Perro(RazaPerro raza, Paises paisOrige, float costo, String nombre, byte edad ){
         super(paisOrige, costo, nombre, edad);
         this.raza = raza;
        
