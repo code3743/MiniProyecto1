@@ -2,14 +2,15 @@ package models;
 import java.util.ArrayList;
 
 
+
 public class Mascota {
     private ArrayList<Vacuna> vacunas;
     private Paises paisOrige;
-    private double costo;
+    private float costo;
     private String nombre;
     private byte edad;
     
-    public Mascota(Paises paisOrige, double costo, String nombre, byte edad) {
+    public Mascota(Paises paisOrige, float costo, String nombre, byte edad) {
         this.paisOrige = paisOrige;
         this.costo = costo;
         this.nombre = nombre;
@@ -62,11 +63,11 @@ public class Mascota {
         this.paisOrige = paisOrige;
     }
 
-    public double getCosto() {
+    public float getCosto() {
         return costo;
     }
 
-    public void setCosto(double costo) {
+    public void setCosto(float costo) {
         this.costo = costo;
     }
 
@@ -88,7 +89,7 @@ public class Mascota {
 
     @Override
     public String toString() {
-        return String.format("Nombre: %s - Edad: %d - Numero Vacunas: %d - Pais origen: %s", nombre, edad, vacunas.size(), paisOrige.getNombrePais());
+        return String.format("Nombre: %s - Edad: %d - Numero Vacunas: %d - Pais origen: %s - Precio: %d ", nombre, edad, vacunas.size(), paisOrige.getNombrePais(),Math.round(costo));
     }
     
 }

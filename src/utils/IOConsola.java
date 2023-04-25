@@ -32,11 +32,12 @@ public class IOConsola {
             System.out.println();
             return;
         }
-        if(maxIndex > args.length || maxIndex < 0){
+        if(maxIndex < 0){
             imprimirError("Error al imprimir");
             return;
         }
-       for (int i = 0; i < maxIndex; i++) {
+       for (int i = 0; i < (maxIndex <args.length?maxIndex:args.length); i++) {
+        
             imprimirIndex(addIndex ?((i+1)+". "): "", args[i].toString());
        }
     }

@@ -1,5 +1,6 @@
 package models;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Veterinaria {
     
@@ -35,17 +36,23 @@ public class Veterinaria {
 
   public ArrayList<Mascota> listaMascotasCostosas(){
     ArrayList<Mascota> mascotasCostosas = this.mascotas;
-    for (int i = 0; i < mascotasCostosas.size(); i++) {
-      for(int j = 0; j < mascotasCostosas.size(); j++){
-        if( mascotasCostosas.get(i).getCosto() > mascotasCostosas.get(i).getCosto()){
-          Mascota temp = mascotasCostosas.get(i);
-          mascotasCostosas.set(i,mascotasCostosas.get(j));
-          mascotasCostosas.set(j, temp);
-      }
-    }  
-  }
+    Mascota auxiliar;
+    int minimo;
+    for(int i=0;i<mascotasCostosas.size();i++){
+        minimo = i;
+        for(int j=i+1;j<mascotasCostosas.size();j++){
+            if(mascotasCostosas.get(j).getCosto() < mascotasCostosas.get(minimo).getCosto()){
+                minimo = j;
+            }
+        }
+        auxiliar = mascotasCostosas.get(i);
+        mascotasCostosas.set(i,mascotasCostosas.get(minimo));
+        mascotasCostosas.set(minimo, auxiliar);
+    }
+    
+    Collections.reverse(mascotasCostosas);
     return mascotasCostosas;
-  }
+  }  
 
   public boolean agregarMascota(Mascota mascota){
     return this.mascotas.add(mascota);
