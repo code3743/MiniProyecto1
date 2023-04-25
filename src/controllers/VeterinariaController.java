@@ -18,9 +18,65 @@ public class VeterinariaController {
     public VeterinariaController() {
         veterinaria = new Veterinaria();
     }
+    
+    public void init(){
+        menu();
+    }
 
-    public void init() {
-       
+    public void menu(){
+        while(true){
+        IOConsola.borrarPantalla();
+        String metodosDelMenu[] = {"Agregar una mascosta", "Actualizar mascota", "Eliminar una mascota",
+        "Buscar una mascota por su nombre", "Listas todas las mascotas","Ir al siguiente menu",
+        "Acerca de la app", "Salir"};
+        IOConsola.imprimir(true, metodosDelMenu);
+        byte opt = (byte )Validaciones.validarOpciones(metodosDelMenu.length, "Elija la opcion: ");
+            switch(opt){
+                case 0: 
+                    insertarMascota();break;
+                case 1: 
+                    actualizarMascota(); break;
+                case 2:
+                    eliminarMascota();break;
+                case 3:
+                    buscarMascotaPorNombre();break;
+                case 4:
+                    listarMascotas();break;
+                case 5: 
+                IOConsola.borrarPantalla();
+                String metodosDelMenuSecundario[] = { "Buscar mascotas con una vacuna determinada", 
+                "Top 5 mascotas mas costosas", "Mascotas que no son orginarias de latinonamerica","Atras"};
+                IOConsola.imprimir(true, metodosDelMenuSecundario);
+                byte opt2 = (byte) Validaciones.validarOpciones(metodosDelMenuSecundario.length, "Elija la opcion: ");
+
+                    switch(opt2){
+                        case 0:mascotasConVacuna();break; 
+                        case 1: listaMascotasCostosas();
+                            IOConsola.imprimirInfo("\nEspera 5 segundos para volver al menu anterior");
+                            try{Thread.sleep(5000);}
+                            catch(InterruptedException e){};break;
+                        case 2: mascotasNoLatinas();
+                            IOConsola.imprimirInfo("\nEspera 5 segundos para volver al menu anterior");
+                            try{Thread.sleep(5000);}
+                            catch(InterruptedException e){}break;
+                        case 3: break;
+                    }break;
+                
+                case 6:
+                    IOConsola.borrarPantalla();
+                    IOConsola.imprimir("Programadores");
+                    IOConsola.imprimir("Jota Emilio Lopez - 2259394");
+                    IOConsola.imprimir("Jhon Alejandro Martinez - 2259565");
+                    IOConsola.imprimir("Juan Miguel Posso Alvarado - 2259610");
+                    IOConsola.imprimirInfo("\nEspera 5 segundos para volver al menu anterior");
+                    try{Thread.sleep(5000);}
+                    catch(InterruptedException e){};break;
+                case 7:
+                    IOConsola.imprimirInfo("Gracias por usar la app");
+                    System.exit(0);break;
+            }
+        }
+
     }
 
     public void listaMascotasCostosas() {
@@ -52,6 +108,10 @@ public class VeterinariaController {
             IOConsola.imprimir(mascota);
         } else {
             IOConsola.imprimirError("No se encontre una mascota con el nombre: " + name);
+        }
+        Integer decision = IOConsola.leerEntero("\nIngrese cualquier numero para volver a la ventana anterior: ");
+        if(decision != null){
+            return;
         }
     }
 
@@ -365,6 +425,7 @@ public class VeterinariaController {
             }
         }
     }
+
 
     public void mascotasNoLatinas() {
         IOConsola.borrarPantalla();
