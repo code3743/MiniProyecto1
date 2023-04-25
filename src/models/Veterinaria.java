@@ -1,6 +1,8 @@
 package models;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Veterinaria {
     
@@ -34,6 +36,17 @@ public class Veterinaria {
     return null;
   }
 
+  public ArrayList<Vacuna> listadoDeVacunasAplicadas(){
+    Set<Vacuna> vacunasUnicas = new HashSet<>();
+    for (Mascota mascota : mascotas) {
+     for (Vacuna vacuna : mascota.getVacunas()) {
+        vacunasUnicas.add(vacuna);
+     }
+    }
+
+    return new ArrayList<Vacuna>(vacunasUnicas);
+  }
+
   public ArrayList<Mascota> listaMascotasCostosas(){
     ArrayList<Mascota> mascotasCostosas = this.mascotas;
     Mascota auxiliar;
@@ -49,7 +62,6 @@ public class Veterinaria {
         mascotasCostosas.set(i,mascotasCostosas.get(minimo));
         mascotasCostosas.set(minimo, auxiliar);
     }
-    
     Collections.reverse(mascotasCostosas);
     return mascotasCostosas;
   }  

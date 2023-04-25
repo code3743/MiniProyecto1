@@ -26,13 +26,16 @@ public class Mascota {
         return this.vacunas.size();
     }
     
-    public boolean elminarVacuna(Vacuna name){
-        return this.vacunas.remove(name);
+    public boolean eliminarVacuna(Vacuna vacuna){
+        if(vacuna == null){
+            return false;
+        }
+        return this.vacunas.remove(vacuna);
     }
 
     public Vacuna buscarVacuna(String nombre){
         for(Vacuna vacuna :this.vacunas){
-            if(vacuna.getNombre().equals(nombre)){
+            if(vacuna.getNombre().toLowerCase().equals(nombre.toLowerCase())){
                 return vacuna;
             }
         }
@@ -40,7 +43,7 @@ public class Mascota {
     }
     public boolean existeVacuna(String nombreVacuna){
         for (Vacuna vacuna : this.vacunas) {
-            if(vacuna.getNombre().equals(nombreVacuna)){
+            if(vacuna.getNombre().toLowerCase().equals(nombreVacuna.toLowerCase())){
                 return true;
             } 
         }

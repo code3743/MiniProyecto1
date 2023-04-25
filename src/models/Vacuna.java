@@ -24,5 +24,8 @@ public class Vacuna {
         this.descripcion = descripcion;
     }
 
-
+    @Override
+    public String toString() {
+        return String.format("Nombre: %s - Descripcion: %s", nombre,descripcion);
+    }
 }
