@@ -337,4 +337,17 @@ public class VeterinariaController {
                 }
            }
     }
+    public void mascotasNoLatinas(){
+        IOConsola.borrarPantalla();
+        IOConsola.imprimirInfo("Mascotas que no tienen pais de origen en latinoamerica");
+        int cuenta =0;
+        for(int i=0 ; i< veterinaria.listarMascotas().size(); i++){
+            if(veterinaria.listarMascotas().get(i).getPaisOrige().isLatino()){
+                cuenta=cuenta+1;
+            }else{
+                IOConsola.imprimir((i-cuenta)+1+".",veterinaria.listarMascotas().get(i).getNombre());
+            }
+        };
+
+    }
 }
