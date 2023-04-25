@@ -43,7 +43,7 @@ public class VeterinariaController {
                     buscarMascotaPorNombre();break;
                 case 4:
                     listarMascotas();break;
-                case 5:  
+                case 5: 
                 IOConsola.borrarPantalla();
                 String metodosDelMenuSecundario[] = { "Buscar mascotas con una vacuna determinada", 
                 "Top 5 mascotas mas costosas", "Mascotas que no son orginarias de latinonamerica","Atras"};
@@ -60,8 +60,9 @@ public class VeterinariaController {
                             IOConsola.imprimirInfo("\nEspera 5 segundos para volver al menu anterior");
                             try{Thread.sleep(5000);}
                             catch(InterruptedException e){}break;
-                        case 3: return;
+                        case 3: break;
                     }break;
+                
                 case 6:
                     IOConsola.borrarPantalla();
                     IOConsola.imprimir("Programadores");
