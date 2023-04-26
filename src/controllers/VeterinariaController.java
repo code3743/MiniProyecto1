@@ -336,7 +336,9 @@ public class VeterinariaController {
                         IOConsola.leerString("Presione cualquier letra para continuar...");
                         break;
                     case 1:
-                       IOConsola.imprimir(true, veterinaria.listarMascotas().toArray());
+                        IOConsola.borrarPantalla();
+                        IOConsola.imprimirInfo("Mascotas");
+                        IOConsola.imprimir(true, veterinaria.listarMascotas().toArray());
                         int indexMascota = Validaciones.validarOpciones(veterinaria.listaMascotasCostosas().size(),
                                 "Ingrese el numero de la mascota: ");
                         if (veterinaria.eliminarMascota(veterinaria.elegirMascota(indexMascota))) {
