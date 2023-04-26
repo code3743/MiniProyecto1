@@ -1,8 +1,6 @@
 package models;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
 
 public class Veterinaria {
     
@@ -34,17 +32,6 @@ public class Veterinaria {
       return mascotas.get(index);
     }
     return null;
-  }
-
-  public ArrayList<Vacuna> listadoDeVacunasAplicadas(){
-    Set<Vacuna> vacunasUnicas = new HashSet<>();
-    for (Mascota mascota : mascotas) {
-     for (Vacuna vacuna : mascota.getVacunas()) {
-        vacunasUnicas.add(vacuna);
-     }
-    }
-
-    return new ArrayList<Vacuna>(vacunasUnicas);
   }
 
   public ArrayList<Mascota> listaMascotasCostosas(){
