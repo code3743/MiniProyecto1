@@ -5,7 +5,7 @@
 # Compiled class file
 *.class
 lib/
-docs/
+
 
 # Log file
 *.log
