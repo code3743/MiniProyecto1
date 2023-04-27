@@ -73,15 +73,11 @@ public class VeterinariaController {
                     break;
                 case 6:
                     IOConsola.borrarPantalla();
-                    IOConsola.imprimir("Programadores");
-                    IOConsola.imprimir("Jota Emilio Lopez - 2259394");
-                    IOConsola.imprimir("Jhon Alejandro Martinez - 2259565");
-                    IOConsola.imprimir("Juan Miguel Posso Alvarado - 2259610");
-                    IOConsola.imprimirInfo("\nEspera 5 segundos para volver al menu anterior");
-                    try {
-                        Thread.sleep(5000);
-                    } catch (InterruptedException e) {
-                    }
+                    IOConsola.imprimirRealizado("Programadores");
+                    IOConsola.imprimirInfo("Jota Emilio Lopez - 2259394");
+                    IOConsola.imprimirInfo("Jhon Alejandro Martinez - 2259565");
+                    IOConsola.imprimirInfo("Juan Miguel Posso Alvarado - 2259610");
+                    IOConsola.leerString("Presione cualquier letra para continuar...");
                     break;
                 case 7:
                     IOConsola.imprimirInfo("Gracias por usar la app");

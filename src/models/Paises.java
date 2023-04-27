@@ -3,6 +3,13 @@ package models;
 import java.util.EnumSet;
 import java.util.Set;
 
+/**
+ * 
+ * Enumeración que representa los países de origen de las mascotas.
+ * 
+ * @author Jota Lopez Ramirez
+ * 
+ */
 public enum Paises {
     Barbados,
     Reunion,
@@ -255,37 +262,61 @@ public enum Paises {
     IsladeNavidad,
     PuertoRico;
 
-    public String getNombrePais(){
+    /**
+     * 
+     * Obtiene el nombre formateado del país.
+     * 
+     * @return El nombre del país con los espacios en blanco adecuados.
+     */
+    public String getNombrePais() {
         return name().replaceAll("(?<=\\p{Lower})(?=\\p{Upper})", " ");
     }
+
+    /**
+     * 
+     * Devuelve el nombre del país.
+     * 
+     * @return El nombre del país.
+     */
     @Override
     public String toString() {
         return name().replaceAll("(?<=\\p{Lower})(?=\\p{Upper})", " ");
 
     }
+
+    /**
+     * 
+     * Conjunto de países latinos.
+     */
     private static Set<Paises> paisesLatinos = EnumSet.of(
-        Argentina,
-        Bolivia,
-        Brasil,
-        Chile,
-        Colombia,
-        CostaRica,
-        Cuba,
-        Ecuador,
-        ElSalvador,
-        Guatemala,
-        Haiti,
-        Honduras,
-        Mexico,
-        Nicaragua,
-        Panama,
-        Paraguay,
-        Peru,
-        RepublicaDominicana,
-        Uruguay,
-        Venezuela
-    );
-    public boolean isLatino(){
+            Argentina,
+            Bolivia,
+            Brasil,
+            Chile,
+            Colombia,
+            CostaRica,
+            Cuba,
+            Ecuador,
+            ElSalvador,
+            Guatemala,
+            Haiti,
+            Honduras,
+            Mexico,
+            Nicaragua,
+            Panama,
+            Paraguay,
+            Peru,
+            RepublicaDominicana,
+            Uruguay,
+            Venezuela);
+
+    /**
+     * 
+     * Verifica si el país es de Latinoamérica.
+     * 
+     * @return true si el país es de Latinoamérica, false en caso contrario.
+     */
+    public boolean isLatino() {
         return paisesLatinos.contains(this);
     }
-  }
+}
