@@ -12,9 +12,28 @@ import utils.IOConsola;
 import utils.Validaciones;
 import java.util.ArrayList;
 
+/**
+ * La clase VeterinariaController es responsable de manejar la lógica de la
+ * aplicación
+ * relacionada con la gestión de la veterinaria. Esta clase tiene una
+ * dependencia de la
+ * clase "Veterinaria", ya que utiliza sus métodos para gestionar las mascotas y
+ * las vacunas.
+ * 
+ * @author Jota Lopez Ramirez
+ * 
+ * @author Alejandro Martinez
+ * 
+ * @author Juan Miguel Posso
+ * 
+ */
 public class VeterinariaController {
     private Veterinaria veterinaria;
 
+    /**
+     * Constructor de la clase VeterinariaController que inicializa una instancia de
+     * la clase Veterinaria.
+     */
     public VeterinariaController() {
         veterinaria = new Veterinaria();
     }
@@ -52,10 +71,11 @@ public class VeterinariaController {
                     String metodosDelMenuSecundario[] = { "Buscar vacunas",
                             "Top 5 mascotas mas costosas", "Mascotas que no son orginarias de latinonamerica",
                             "Atras" };
-                            boolean bandera = true;
-                     while(bandera){
+                    boolean bandera = true;
+                    while (bandera) {
                         IOConsola.imprimir(true, metodosDelMenuSecundario);
-                        byte optSecundario = (byte) Validaciones.validarOpciones(metodosDelMenuSecundario.length,  "Elija la opcion: ");
+                        byte optSecundario = (byte) Validaciones.validarOpciones(metodosDelMenuSecundario.length,
+                                "Elija la opcion: ");
                         switch (optSecundario) {
                             case 0:
                                 moduloVacunacion();
@@ -73,15 +93,11 @@ public class VeterinariaController {
                     break;
                 case 6:
                     IOConsola.borrarPantalla();
-                    IOConsola.imprimir("Programadores");
-                    IOConsola.imprimir("Jota Emilio Lopez - 2259394");
-                    IOConsola.imprimir("Jhon Alejandro Martinez - 2259565");
-                    IOConsola.imprimir("Juan Miguel Posso Alvarado - 2259610");
-                    IOConsola.imprimirInfo("\nEspera 5 segundos para volver al menu anterior");
-                    try {
-                        Thread.sleep(5000);
-                    } catch (InterruptedException e) {
-                    }
+                    IOConsola.imprimirRealizado("Programadores");
+                    IOConsola.imprimirInfo("Jota Emilio Lopez - 2259394");
+                    IOConsola.imprimirInfo("Jhon Alejandro Martinez - 2259565");
+                    IOConsola.imprimirInfo("Juan Miguel Posso Alvarado - 2259610");
+                    IOConsola.leerString("Presione cualquier letra para continuar...");
                     break;
                 case 7:
                     IOConsola.imprimirInfo("Gracias por usar la app");
@@ -94,7 +110,7 @@ public class VeterinariaController {
 
     public void listaMascotasCostosas() {
         IOConsola.borrarPantalla();
-        if(veterinaria.listarMascotas().isEmpty()){
+        if (veterinaria.listarMascotas().isEmpty()) {
             IOConsola.imprimirProblemas("No hay mascotas agregadas aun");
             IOConsola.leerString("Presione cualquier letra para continuar...");
             return;
@@ -105,16 +121,16 @@ public class VeterinariaController {
     }
 
     public void listarMascotas() {
-            IOConsola.borrarPantalla();
-            ArrayList<Mascota> mascotas = veterinaria.listarMascotas();
-            if (mascotas.isEmpty()) {
-                IOConsola.imprimirError("No hay mascotas agregadas");
-                IOConsola.leerString("Presione cualquier letra para continuar...");
-                return;
-            }
-            IOConsola.imprimirInfo("Listado de mascotas");
-            IOConsola.imprimir(true, mascotas.toArray());
+        IOConsola.borrarPantalla();
+        ArrayList<Mascota> mascotas = veterinaria.listarMascotas();
+        if (mascotas.isEmpty()) {
+            IOConsola.imprimirError("No hay mascotas agregadas");
             IOConsola.leerString("Presione cualquier letra para continuar...");
+            return;
+        }
+        IOConsola.imprimirInfo("Listado de mascotas");
+        IOConsola.imprimir(true, mascotas.toArray());
+        IOConsola.leerString("Presione cualquier letra para continuar...");
     }
 
     public void buscarMascotaPorNombre() {
@@ -366,22 +382,26 @@ public class VeterinariaController {
             IOConsola.imprimirInfo("Actualizaciar Mascotas");
             IOConsola.imprimir(true, opciones);
             byte opt = (byte) Validaciones.validarOpciones(opciones.length, "Elija la opcion: ");
-            
-                switch (opt) {
 
-                    case 0:
+            switch (opt) {
+
+                case 0:
                     if (!(veterinaria.listarMascotas().isEmpty())) {
                         IOConsola.imprimirInfo("Listado");
                         IOConsola.imprimir(true, veterinaria.listarMascotas().toArray());
                         int indexMascota = -1;
-                        String nombreMascota = IOConsola.leerString("Ingrese el nombre o el numero de la mascota a actualizar: ")
+                        String nombreMascota = IOConsola
+                                .leerString("Ingrese el nombre o el numero de la mascota a actualizar: ")
                                 .toLowerCase();
-                        if(nombreMascota.matches("[0-9]+")){
+                        if (nombreMascota.matches("[0-9]+")) {
                             int indexTemp = Integer.parseInt(nombreMascota) - 1;
-                            indexMascota = indexTemp >= 0 && indexTemp < veterinaria.listaMascotasCostosas().size() ? indexTemp : -1;
-                        }else{
+                            indexMascota = indexTemp >= 0 && indexTemp < veterinaria.listaMascotasCostosas().size()
+                                    ? indexTemp
+                                    : -1;
+                        } else {
                             for (int i = 0; i < veterinaria.listarMascotas().size(); i++) {
-                                if (veterinaria.listarMascotas().get(i).getNombre().toLowerCase().equals(nombreMascota)) {
+                                if (veterinaria.listarMascotas().get(i).getNombre().toLowerCase()
+                                        .equals(nombreMascota)) {
                                     indexMascota = i;
                                     break;
                                 }
@@ -418,22 +438,22 @@ public class VeterinariaController {
                                 case 5:
                                     break;
                             }
-                           
-                        }else{
+
+                        } else {
                             IOConsola.borrarPantalla();
                             IOConsola.imprimirError("No se encontro la mascota");
                             IOConsola.leerString("Presione cualquier letra para continuar...");
                         }
-                    }else{
+                    } else {
                         IOConsola.borrarPantalla();
                         IOConsola.imprimirError("No hay mascotas agregadas");
                         IOConsola.leerString("Presione cualquier letra para continuar...");
                         return;
                     }
-                        break;
-                    case 1:
-                        return;
-                }
+                    break;
+                case 1:
+                    return;
+            }
         }
     }
 
@@ -482,12 +502,12 @@ public class VeterinariaController {
         IOConsola.borrarPantalla();
         IOConsola.imprimirInfo("Mascotas que no tienen pais de origen en latinoamerica");
         ArrayList<Mascota> mascotasNoLatinas = new ArrayList<Mascota>();
-        for(Mascota mascota: veterinaria.listarMascotas()){
-            if(!mascota.getPaisOrige().isLatino()){
-                mascotasNoLatinas.add( mascota);
+        for (Mascota mascota : veterinaria.listarMascotas()) {
+            if (!mascota.getPaisOrige().isLatino()) {
+                mascotasNoLatinas.add(mascota);
             }
         }
-        if(mascotasNoLatinas.isEmpty()){
+        if (mascotasNoLatinas.isEmpty()) {
             IOConsola.imprimirProblemas("No hay mascotas que coincidan");
             IOConsola.leerString("Presione cualquier letra para continuar...");
             return;

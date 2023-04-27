@@ -1,4 +1,13 @@
 package models;
+
+/**
+ * 
+ * 
+ * Enumeración de razas de gatos.
+ * 
+ * @author Juan Miguel Posso
+ * 
+ */
 public enum RazaGato {
     Abisinio,
     AmericanShorthair,
@@ -35,20 +44,26 @@ public enum RazaGato {
     Tonkines,
     Toyger,
     VanTurco;
-    public String getNombreRaza(){
+
+    /**
+     * 
+     * Obtiene el nombre de la raza en un formato legible.
+     * 
+     * @return El nombre de la raza con espacios en lugar de mayúsculas.
+     */
+    public String getNombreRaza() {
         return name().replaceAll("(?<=\\p{Lower})(?=\\p{Upper})", " ");
     }
+
+    /**
+     * 
+     * Obtiene una representación en String de la raza en un formato legible.
+     * 
+     * @return El nombre de la raza con espacios en lugar de mayúsculas.
+     */
     @Override
     public String toString() {
         return name().replaceAll("(?<=\\p{Lower})(?=\\p{Upper})", " ");
 
     }
-    //Metodo que imprime las opciones de razas de gatos que estan disponibles con numeracion en lista
-    /* public void imprimirRazas(){
-        Integer i=1;
-        for(RazaGato raza: RazaGato.values()){
-        System.out.println(i+"."+raza.getNombreRaza());
-        i++;
-        }
-    } */
 }
